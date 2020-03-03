@@ -113,3 +113,62 @@ someUser.name = 'Kristine';
 nameFormatter(someUser.name); // "Oops"
 
 someUser.name; // "Kristine"
+
+// Arrow function
+
+// Same function written as function declaration
+function fullName (fName, lName) { 
+    console.log(`${lName}, ${fName}`);
+  }
+  fullName('Tiffany', 'Hudgens');
+  
+  // Same function written as function expression
+  fullName = function (fName, lName) { 
+    console.log(`${lName}, ${fName}`);
+  }
+  fullName('Kristine', 'Hudgens');
+  
+  // Basic arrow function
+  helloWorld = () => { console.log("Hi there"); }
+  helloWorld();
+  
+  // Arrow function with shorthand function argument for single arguments
+  firstName = fname => { console.log(fname.toUpperCase()); }
+  firstName('Jordan');
+  
+  // Arrow function with multiple arguments
+  fullName = (fName, lName) => { console.log(`${lName}, ${fName}`); }
+  fullName('Kristine', 'Hudgens');
+
+//   How arrow Functions Work with 'this'
+// JavaScript didn't have classes until recently. You can treat functions like classes and get objects out of them by adding attributes to the functions. Every type of function instide JavaScript is an object and objects can have attributes.
+
+function Invoice(subTotal) {
+    this.taxRate = 0.06;
+    this.subTotal = subTotal;
+  
+    this.total = setInterval(() => {
+      console.log((this.taxRate * this.subTotal) + this.subTotal);
+      // console.log(this);
+    }, 2000);
+  }
+  
+  const inv = new Invoice(200);
+  inv.total();
+
+
+  //   Guide to adding default object values to function arguments
+
+const blog = {
+    title: 'My great post',
+    summary: 'Summary of my post'
+  }
+  
+  const openGraphMetadata = ({ title, summary = 'A DailySmarty Post' }) => {
+    console.log(`
+      og-title=${title}
+      og-description=${summary}
+    `);
+  }
+  
+  openGraphMetadata(blog);
